@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastrar Cliente</title>
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+
+	<h:outputLabel value="Cadastro de Cliente" styleClass="title" />
+
+	<hr />
+
+	<hr />
+
+	<h:form>
+		<p:menubar>
+
+			<p:submenu>
+				<f:facet name="label">
+					<p:menuitem value="Cadastrar" />
+				</f:facet>
+				<p:menuitem value="Acessoria"
+					url="/paginas/cadastrar/cadastrarAcessoria.jsf" />
+				<p:menuitem value="Departamento"
+					url="/paginas/cadastrar/cadastrarDepartamento.jsf" />
+				<p:menuitem value="Empregado"
+					url="/paginas/cadastrar/cadastrarEmpregado.jsf" />
+				<p:menuitem value="Projeto"
+					url="/paginas/cadastrar/cadastrarProjeto.jsf" />
+				<p:menuitem value="Cliente"
+					url="/paginas/cadastrar/cadastrarCliente.jsf" />
+			</p:submenu>
+
+			<p:submenu>
+				<f:facet name="label">
+					<p:menuitem value="Consultar" />
+				</f:facet>
+				<p:menuitem value="Acessorias"
+					url="/paginas/consultar/consultarAcessorias.jsf" />
+				<p:menuitem value="Departamentos"
+					url="/paginas/consultar/consultarDepartamentos.jsf" />
+				<p:menuitem value="Empregados"
+					url="/paginas/consultar/consultarEmpregados.jsf" />
+				<p:menuitem value="Projetos"
+					url="/paginas/consultar/consultarProjetos.jsf" />
+				<p:menuitem value="Clientes"
+					url="/paginas/consultar/consultarClientes.jsf" />
+			</p:submenu>
+
+		</p:menubar>
+		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+		<h:panelGrid columns="2" id="panelDepartamento">
+		
+		<h:outputLabel value="Codigo Cliente" for="inputCodigoCliente" styleClass="emphasis" />
+			<h:inputText id="inputcodigoCliente" readonly="true" label="codigoCliente"
+				value="#{clienteBean.cliente.codigoCliente}"  size="1"
+				maxlength="50" />
+				
+			<h:outputLabel value="Nome Cliente" for="inputnomeCliente" styleClass="emphasis" />
+			<h:inputText id="inputnomeCliente" label="Nome Cliente"
+				value="#{clienteBean.cliente.nomeCliente}" required="true" size="30"
+				maxlength="50" />
+				
+			<h:outputLabel value="Telefone" for="inputTelefone" styleClass="emphasis" />
+			<h:inputText id="inputTelefone" label="Telefone"
+				value="#{clienteBean.cliente.telefone}" required="true" size="10"
+				maxlength="50" />	
+				
+			<h:outputLabel value="Rua" for="inputRua" styleClass="emphasis" />
+			<h:inputText id="inputRua" label="Rua"
+				value="#{clienteBean.endereco.rua}" required="true" size="30"
+				maxlength="50" />
+			
+			<h:outputLabel value="Numero" for="inputNumero" styleClass="emphasis" />
+			<h:inputText id="inputNumero" label="Numero"
+				value="#{clienteBean.endereco.numero}" required="true" size="10"
+				maxlength="50" />	
+						
+			<h:outputLabel value="Bairro" for="inputBairro" styleClass="emphasis" />
+			<h:inputText id="inputBairro" label="Bairro"
+				value="#{clienteBean.endereco.bairro}" required="true" size="30"
+				maxlength="50" />
+			
+			<h:outputLabel value="Complemento" for="inputComplemento" styleClass="emphasis" />
+			<h:inputText id="inputComplemento" label="Complemento"
+				value="#{clienteBean.endereco.complemento}" required="true" size="30"
+				maxlength="50" />		
+					
+			<h:outputLabel value="Cep" for="inputCep" styleClass="emphasis" />
+			<h:inputText id="inputCep" label="Cep"
+				value="#{clienteBean.endereco.cep}" required="true" size="30"
+				maxlength="50" />
+				
+			<h:outputLabel value="Cidade" for="inputCidade" styleClass="emphasis" />
+			<h:inputText id="inputCidade" label="Cidade"
+				value="#{clienteBean.endereco.cidade}" required="true" size="20"
+				maxlength="50" />
+			
+			<h:outputLabel value="Estado" for="inputEstado" styleClass="emphasis" />
+			<h:inputText id="inputEstado" label="Estado"
+				value="#{clienteBean.endereco.estado}" required="true" size="10"
+				maxlength="50" />	
+						
+				<h:commandButton id="btnsalvar" value= "salvar" action= "#{clienteBean.salvar}" />
+			<h:link outcome="/paginas/homepage" value="homepage" />
+		</h:panelGrid>	
+	</h:form>
+
+</h:body>
+</html>

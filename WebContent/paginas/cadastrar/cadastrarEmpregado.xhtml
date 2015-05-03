@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastrar Empregado</title>
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+
+	<h:outputLabel value="Cadastro de Empregado"
+		styleClass="title" />
+
+	<hr />
+
+	<hr />
+
+	<h:form>
+		<p:menubar>
+
+			<p:submenu>
+				<f:facet name="label">
+					<p:menuitem value="Cadastrar" />
+				</f:facet>
+				<p:menuitem value="Acessoria"
+					url="/paginas/cadastrar/cadastrarAcessoria.jsf" />
+				<p:menuitem value="Departamento"
+					url="/paginas/cadastrar/cadastrarDepartamento.jsf" />
+				<p:menuitem value="Empregado"
+					url="/paginas/cadastrar/cadastrarEmpregado.jsf" />
+				<p:menuitem value="Projeto"
+					url="/paginas/cadastrar/cadastrarProjeto.jsf" />
+				<p:menuitem value="Cliente"
+					url="/paginas/cadastrar/cadastrarCliente.jsf" />
+			</p:submenu>
+
+			<p:submenu>
+				<f:facet name="label">
+					<p:menuitem value="Consultar" />
+				</f:facet>
+				<p:menuitem value="Acessorias"
+					url="/paginas/consultar/consultarAcessorias.jsf" />
+				<p:menuitem value="Departamentos"
+					url="/paginas/consultar/consultarDepartamentos.jsf" />
+				<p:menuitem value="Empregados"
+					url="/paginas/consultar/consultarEmpregados.jsf" />
+				<p:menuitem value="Projetos"
+					url="/paginas/consultar/consultarProjetos.jsf" />
+				<p:menuitem value="Clientes"
+					url="/paginas/consultar/consultarClientes.jsf" />
+			</p:submenu>
+
+		</p:menubar>
+		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+		<h:panelGrid columns="2" id="panelDepartamento">
+		
+		<h:outputLabel value="Codigo Empregado" for="inputCodigoEmpregado" styleClass="emphasis" />
+			<h:inputText id="inputcodigoEmpregado" readonly="true" label="codigoDepartamento"
+				value="#{empregadoBean.empregado.codigoEmpregado}"  size="1"
+				maxlength="50" />
+				
+			<h:outputLabel value="Nome Empregado" for="inputnomeEmpregado" styleClass="emphasis" />
+			<h:inputText id="inputnomeEmpregado" label="Nome Empregado"
+				value="#{empregadoBean.empregado.nomeEmpregado}" required="true" size="30"
+				maxlength="50" />
+				
+			<h:outputLabel value="Cargo" for="inputCargo" styleClass="emphasis" />
+			<h:inputText id="inputCargo" label="Cargo"
+				value="#{empregadoBean.empregado.cargo}" required="true" size="30"
+				maxlength="50" />	
+				
+			<h:outputLabel value="Codigo Projeto" for="inputCodigoProjeto" styleClass="emphasis" />
+			<h:selectOneMenu id="selectProjeto" value="#{empregadoBean.selectedProjeto}">
+				<f:selectItems 
+						value="#{empregadoBean.listaProjeto()}"
+						var="departamento"
+						itemValue="#{departamento.codigoProjeto}"
+						itemLabel="#{departamento.codigoProjeto}  -  #{departamento.nomeProjeto}"/>
+			</h:selectOneMenu>  
+					
+			<h:commandButton id="btnsalvar" value= "salvar" action= "#{empregadoBean.salvar}" />
+			<h:link outcome="/paginas/homepage" value="homepage" />
+		</h:panelGrid>				
+	</h:form>
+
+
+</h:body>
+</html>

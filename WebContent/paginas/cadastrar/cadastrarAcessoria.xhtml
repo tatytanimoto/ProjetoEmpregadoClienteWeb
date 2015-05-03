@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastrar Acessoria</title>
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+	
+	<h:outputLabel value="Cadastro de Acessoria "
+		styleClass="title" />
+
+	<hr />
+
+	<hr />
+
+	<h:form>
+
+	
+		
+		<h:messages styleClass="msgError" />
+		
+		<h:panelGrid columns="2">
+			
+
+			<h:outputLabel value="Codigo Acessoria" for="inputCodigoAcessoria" styleClass="emphasis" />
+			<h:inputText id="inputCodigoAcessoria" label="Codigo Acessoria"
+				value="#{acessoriaBean.acessoria.codigoAcessoria}"  size="1"
+				maxlength="50" />
+				
+			<h:outputLabel value="Descricao Acessoria" for="inputDescricaoAcessoria" styleClass="emphasis" />
+			<h:inputText id="inputDescricaoAcessoria" label="Descricao Acessoria"
+				value="#{acessoriaBean.acessoria.descricaoAcessoria}" required="true" size="30"
+				maxlength="50" />
+				
+				<h:outputLabel value="Data da Acessoria" for="inpucalendarioDataAcessoria" styleClass="emphasis" />
+			<p:calendar   id="calendarioDataAcessoria" value="#{acessoriaBean.acessoria.dataAcessoria}" >
+				<f:convertDateTime type="date" datestyle="short" pattern="dd/MM/yyyy" ></f:convertDateTime> 
+			</p:calendar> 
+			
+		
+			<h:outputLabel value="Cliente" for="inputCliente" styleClass="emphasis" />
+			<h:selectOneMenu id="selectCliente" value="#{acessoriaBean.selectedCliente1}">
+				<f:selectItems 
+						value="#{acessoriaBean.consultarCliente()}"
+						var="cliente"
+						itemValue="#{cliente.codigoCliente}"
+						itemLabel="#{cliente.nomeCliente}"/>
+			</h:selectOneMenu>   		
+				
+			<h:outputLabel value="Empregado" for="inputEmpregado" styleClass="emphasis" />
+			<h:selectOneMenu id="selectEmpregado" value="#{acessoriaBean.selectedEmpregado}">
+				<f:selectItems 
+						value="#{acessoriaBean.consultarEmpregado()}"
+						var="empregado"
+						itemValue="#{empregado.codigoEmpregado}"
+						itemLabel="#{empregado.nomeEmpregado}"/>
+			</h:selectOneMenu>
+								
+			<h:commandButton id="btnsalvar" value= "salvar" action= "#{acessoriaBean.salvar}" />	
+		<h:link outcome="/paginas/homepage" value="homepage" />
+	</h:panelGrid>		
+	</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Consultar Empregados</title>
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+
+	<h:outputLabel value="Consulta de Empregados"
+		styleClass="title" />
+
+	<hr />
+	<h:form>
+		<p:menubar>
+
+			<p:submenu>
+				<f:facet name="label">
+					<p:menuitem value="Cadastrar" />
+				</f:facet>
+				<p:menuitem value="Acessoria"
+					url="/paginas/cadastrar/cadastrarAcessoria.jsf" />
+				<p:menuitem value="Departamento"
+					url="/paginas/cadastrar/cadastrarDepartamento.jsf" />
+				<p:menuitem value="Empregado"
+					url="/paginas/cadastrar/cadastrarEmpregado.jsf" />
+				<p:menuitem value="Projeto"
+					url="/paginas/cadastrar/cadastrarProjeto.jsf" />
+				<p:menuitem value="Cliente"
+					url="/paginas/cadastrar/cadastrarCliente.jsf" />
+			</p:submenu>
+
+			<p:submenu>
+				<f:facet name="label">
+					<p:menuitem value="Consultar" />
+				</f:facet>
+				<p:menuitem value="Acessorias"
+					url="/paginas/consultar/consultarAcessorias.jsf" />
+				<p:menuitem value="Departamentos"
+					url="/paginas/consultar/consultarDepartamentos.jsf" />
+				<p:menuitem value="Empregados"
+					url="/paginas/consultar/consultarEmpregados.jsf" />
+				<p:menuitem value="Projetos"
+					url="/paginas/consultar/consultarProjetos.jsf" />
+				<p:menuitem value="Clientes"
+					url="/paginas/consultar/consultarClientes.jsf" />
+			</p:submenu>
+
+		</p:menubar>
+	<h:outputText value="No momento não exite empregados cadastrados" styleClass="msgInfo"
+		rendered="#{empty empregadoBean.consultarEmpregados()}" />
+
+	<h:dataTable value="#{empregadoBean.consultarEmpregados()}"
+		var="empregado" rowClasses="oddRows, evenRows" headerClass="header"
+		styleClass="table" cellpadding="2" cellspacing="1"
+		rendered="#{!empty empregadoBean.consultarEmpregados()}">
+		
+		<f:facet name="caption">
+		<h:outputText value="Lista de Empregados Cadastrados" styleClass="titleHelvetica" />
+		</f:facet>
+
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Código" />
+			</f:facet>
+			<h:outputText value="#{empregado.codigoEmpregado}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Nome" />
+			</f:facet>
+			<h:outputText value="#{empregado.nomeEmpregado}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Cargo" />
+			</f:facet>
+			<h:outputText value="#{empregado.cargo}" />
+		</h:column>
+
+	</h:dataTable>
+
+	<hr />
+
+
+		<h:commandLink value="homepage" action="/paginas/homepage" />
+	</h:form>
+
+</h:body>
+</html>

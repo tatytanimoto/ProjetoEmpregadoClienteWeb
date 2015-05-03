@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Consultar Departamentos</title>
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+
+	<h:outputLabel value="Consulta de Departamentos"
+		styleClass="titleHelvetica" />
+
+	<hr />
+		<h:outputText value="No momento não existe acessorias Cadastradas."
+		styleClass="msgInfo"
+		rendered="#{empty departamentoBean.consultarDepartamentos()}" />
+	<hr />
+		
+	<h:form>
+	<p:menubar>
+
+			<p:submenu>
+				<f:facet name="label">
+					<p:menuitem value="Cadastrar" />
+				</f:facet>
+				<p:menuitem value="Acessoria"
+					url="/paginas/cadastrar/cadastrarAcessoria.jsf" />
+				<p:menuitem value="Departamento"
+					url="/paginas/cadastrar/cadastrarDepartamento.jsf" />
+				<p:menuitem value="Empregado"
+					url="/paginas/cadastrar/cadastrarEmpregado.jsf" />
+				<p:menuitem value="Projeto"
+					url="/paginas/cadastrar/cadastrarProjeto.jsf" />
+				<p:menuitem value="Cliente"
+					url="/paginas/cadastrar/cadastrarCliente.jsf" />
+			</p:submenu>
+
+			<p:submenu>
+				<f:facet name="label">
+					<p:menuitem value="Consultar" />
+				</f:facet>
+				<p:menuitem value="Acessorias"
+					url="/paginas/consultar/consultarAcessorias.jsf" />
+				<p:menuitem value="Departamentos"
+					url="/paginas/consultar/consultarDepartamentos.jsf" />
+				<p:menuitem value="Empregados"
+					url="/paginas/consultar/consultarEmpregados.jsf" />
+				<p:menuitem value="Projetos"
+					url="/paginas/consultar/consultarProjetos.jsf" />
+				<p:menuitem value="Clientes"
+					url="/paginas/consultar/consultarClientes.jsf" />
+			</p:submenu>
+
+		</p:menubar>
+		<h:dataTable value="#{departamentoBean.consultarDepartamentos()}"
+		var="departamento" rowClasses="oddRows, evenRows" headerClass="header"
+		styleClass="table" cellpadding="2" cellspacing="1" rendered="#{!empty departamentoBean.consultarDepartamentos()}">
+
+		<h:column>
+			<f:facet name="header">Código Departamento</f:facet>
+			<h:outputText value="#{departamento.codigoDepartamento}"
+				style="text-align: center; display: block;" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Nome Departamento</f:facet>
+			<h:outputText value="#{departamento.nomeDepartamento}"
+				style="text-align: center; display: block;" />
+		</h:column>
+		
+		</h:dataTable>
+		<h:link outcome="/paginas/homepage" value="homepage" />
+	</h:form>
+
+</h:body>
+</html>
